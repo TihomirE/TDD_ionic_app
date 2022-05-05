@@ -1,3 +1,44 @@
+declare global {
+    // eslint-disable-next-line @typescript-eslint/no-namespace
+    namespace Cypress {
+        interface Chainable<Subject> {
+            navigateToHomePage(): typeof navigateToHomePage;
+            navigateToLessonSelectPage(): typeof navigateToLessonSelectPage;
+        }
+    }
+}
+
+const navigateToHomePage = () => {
+    cy.visit('/');
+};
+Cypress.Commands.add('navigateToHomePage', navigateToHomePage);
+
+const navigateToLessonSelectPage = () => {
+    cy.visit('/');
+};
+Cypress.Commands.add('navigateToLessonSelectPage', navigateToLessonSelectPage);
+
+export { };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // ***********************************************
 // This example namespace declaration will help
 // with Intellisense and code completion in your
