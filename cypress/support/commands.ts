@@ -1,9 +1,12 @@
+import { getLessonListItems, getModuleListItems } from './utils';
+
 declare global {
     // eslint-disable-next-line @typescript-eslint/no-namespace
     namespace Cypress {
         interface Chainable<Subject> {
             navigateToHomePage(): typeof navigateToHomePage;
             navigateToLessonSelectPage(): typeof navigateToLessonSelectPage;
+            navigateToLessonPage(): typeof navigateToLessonPage;
         }
     }
 }
@@ -14,9 +17,16 @@ const navigateToHomePage = () => {
 Cypress.Commands.add('navigateToHomePage', navigateToHomePage);
 
 const navigateToLessonSelectPage = () => {
-    cy.visit('/');
+    navigateToHomePage();
+    getModuleListItems().first().click();
 };
 Cypress.Commands.add('navigateToLessonSelectPage', navigateToLessonSelectPage);
+
+const navigateToLessonPage = () => {
+    navigateToLessonSelectPage();
+    getLessonListItems().first().click();
+  };
+  Cypress.Commands.add('navigateToLessonPage', navigateToLessonPage);
 
 export { };
 
